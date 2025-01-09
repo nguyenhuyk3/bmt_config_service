@@ -3,7 +3,7 @@ package implementations
 import (
 	"config_service/global"
 	"config_service/internal/services"
-	"errors"
+	"fmt"
 )
 
 type configService struct {
@@ -19,6 +19,6 @@ func (c *configService) GetServiceConfig(serviceName string) (interface{}, error
 	case "bmt_user":
 		return global.Config.BMTUser, nil
 	default:
-		return nil, errors.New("service not found")
+		return nil, fmt.Errorf("service %s not found", serviceName)
 	}
 }

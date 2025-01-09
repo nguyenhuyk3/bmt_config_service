@@ -1,17 +1,22 @@
 package settings
 
 type Config struct {
-	Server  ServerSetting  `mapstructure:"server" json:"server"`
-	BMTUser PostgreSetting `mapstructure:"bmt_user" json:"bmt_user"`
-	Logger  LoggerSetting  `mapstructure:"logger" json:"logger"`
+	Server  serverSetting  `mapstructure:"server" json:"server"`
+	Kafka   kafkaSetting   `mapstructure:"kafka" json:"kafka"`
+	BMTUser postgreSetting `mapstructure:"bmt_user" json:"bmt_user"`
+	Logger  loggerSetting  `mapstructure:"logger" json:"logger"`
 }
 
-type ServerSetting struct {
+type serverSetting struct {
 	Port string `mapstructure:"port" json:"port"`
 	Mode string `mapstructure:"mode" json:"mode"`
 }
 
-type PostgreSetting struct {
+type kafkaSetting struct {
+	Address string `mapstructure:"address" json:"address"`
+}
+
+type postgreSetting struct {
 	Host            string `mapstructure:"host" json:"host"`
 	Port            int    `mapstructure:"port" json:"port"`
 	Username        string `mapstructure:"username" json:"username"`
@@ -22,7 +27,7 @@ type PostgreSetting struct {
 	ConnMaxLifetime int    `mapstructure:"conn_max_lifetime" json:"conn_max_lifetime"`
 }
 
-type LoggerSetting struct {
+type loggerSetting struct {
 	LogLevel    string `mapstructure:"log_level" json:"log_level"`
 	FileLogName string `mapstructure:"file_log_name" json:"file_log_name"`
 	MaxBackups  int    `mapstructure:"max_backups" json:"max_backups"`
