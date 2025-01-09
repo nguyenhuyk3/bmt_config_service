@@ -5,15 +5,22 @@ import (
 )
 
 type responseData struct {
-	Code    int         `json:"code"`
+	Code    int         `json:"status_code"`
 	Message string      `json:"message"`
-	Data    interface{} `json:"data"`
+	Data    interface{} `json:"data,omitempty"`
 }
 
-func Response(c *gin.Context, code int, msg string, data interface{}) {
+func SuccessResponse(c *gin.Context, code int, msg string, data interface{}) {
 	c.JSON(code, responseData{
 		Code:    code,
 		Message: msg,
 		Data:    data,
+	})
+}
+
+func FailureResponse(c *gin.Context, code int, msg string) {
+	c.JSON(code, responseData{
+		Code:    code,
+		Message: msg,
 	})
 }

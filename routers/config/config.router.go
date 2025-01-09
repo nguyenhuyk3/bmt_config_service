@@ -2,7 +2,7 @@ package config
 
 import (
 	"config_service/internal/controllers"
-	"config_service/internal/services"
+	"config_service/internal/implementations"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,7 +11,7 @@ type ConfigRouter struct {
 }
 
 func (cr *ConfigRouter) InitConfigRouter(rg *gin.RouterGroup) {
-	configService := services.NewConfigService()
+	configService := implementations.NewConfigService()
 	configController := controllers.NewConfigController(configService)
 	configRouterPublic := rg.Group("/config")
 	{

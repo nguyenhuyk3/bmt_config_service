@@ -25,11 +25,15 @@ type GetServiceConfigReq struct {
 func (cc *ConfigController) GetServiceConfig(c *gin.Context) {
 	var req GetServiceConfigReq
 	if err := c.ShouldBindJSON(&req); err != nil {
-		responses.Response(c, http.StatusBadRequest, "", nil)
+		responses.FailureResponse(c, http.StatusBadRequest, "invalid request")
 		return
 	}
 
-	config := cc.configService.GetServiceConfig(req.ServiceName)
+	config, err := cc.configService.GetServiceConfig(req.ServiceName)
+	if err != nil {
+		responses.FailureResponse(c, http.StatusBadRequest, err.Error())
+		return
+	}
 
-	responses.Response(c, http.StatusOK, "data returned successfully", config)
+	responses.SuccessResponse(c, http.StatusOK, "data returned successfully", config)
 }
