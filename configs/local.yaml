@@ -2,18 +2,24 @@ server:
   port: 5001
   mode: "dev"
 bmt_user:
-  host: 127.0.0.1
-  port: 5432
-  username: postgres
-  password: anhiuemlove33
-  dbname: bmt_user
-  max_idle_conns: 10
-  max_open_conns: 100
-  conn_max_lifetime: 3600
-logger:
-  log_level: debug
-  file_log_name: "./storages/logs/dev.001.log"
-  max_size: 500
-  max_backups: 3
-  max_age: 28
-  compress: true
+  database:
+    host: 127.0.0.1
+    port: 5432
+    username: "postgres"
+    password: "anhiuemlove33"
+    dbname: "bmt_user"
+    max_idle_conns: 10
+    max_open_conns: 100
+    conn_max_lifetime: 3600
+  mail:
+    host: "email-smtp.us-east-1.amazonaws.com"
+    port: "2587"
+    username: "AKIA6GIFQIE5VHGEVMH7"
+    password: "BFbj4YdNTIYrkX1+SvumRnbA0br/sUNzrUOztb7SaVkz"
+# logger:
+#   log_level: debug
+#   file_log_name: "./storages/logs/dev.001.log"
+#   max_size: 500
+#   max_backups: 3
+#   max_age: 28
+#   compress: true
