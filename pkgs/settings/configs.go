@@ -1,21 +1,26 @@
 package settings
 
+type basicSetting struct {
+	Host     string `mapstructure:"host" json:"host"`
+	Port     int    `mapstructure:"port" json:"port"`
+	Username string `mapstructure:"username" json:"username,omitempty"`
+	Password string `mapstructure:"password" json:"password,omitempty"`
+	Database int    `mapstructure:"database" json:"database,omitempty"`
+}
 type postgreSetting struct {
-	Host            string `mapstructure:"host" json:"host"`
-	Port            int    `mapstructure:"port" json:"port"`
-	Username        string `mapstructure:"username" json:"username"`
-	Password        string `mapstructure:"password" json:"password"`
-	Dbname          string `mapstructure:"dbname" json:"dbname"`
-	MaxIdleConns    int    `mapstructure:"max_idle_conns" json:"max_idle_conns"`
-	MaxOpenConns    int    `mapstructure:"max_open_conns" json:"max_open_conns"`
-	ConnMaxLifetime int    `mapstructure:"conn_max_lifetime" json:"conn_max_lifetime"`
+	BasicSetting    basicSetting `mapstructure:",squash" json:"basic_settings"`
+	Dbname          string       `mapstructure:"dbname" json:"dbname"`
+	MaxIdleConns    int          `mapstructure:"max_idle_conns" json:"max_idle_conns"`
+	MaxOpenConns    int          `mapstructure:"max_open_conns" json:"max_open_conns"`
+	ConnMaxLifetime int          `mapstructure:"conn_max_lifetime" json:"conn_max_lifetime"`
 }
 
 type mailSetting struct {
-	Host     string `mapstructure:"host" json:"host"`
-	Port     int    `mapstructure:"port" json:"port"`
-	Username string `mapstructure:"username" json:"username"`
-	Password string `mapstructure:"password" json:"password"`
+	BasicSetting basicSetting `mapstructure:",squash" json:"basic_settings"`
+}
+
+type redisSetting struct {
+	BasicSetting basicSetting `mapstructure:",squash" json:"basic_settings"`
 }
 
 // type loggerSetting struct {

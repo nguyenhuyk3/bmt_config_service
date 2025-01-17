@@ -11,6 +11,7 @@ type serverSetting struct {
 }
 
 type bmtUser struct {
-	Databse postgreSetting `mapstructure:"database" json:"database"`
-	Mail    mailSetting    `mapstructure:"mail" json:"mail"`
+	Database postgreSetting `mapstructure:"database" json:"database"`
+	Mail     mailSetting    `mapstructure:"mail" json:"mail"`
+	Redis    redisSetting   `mapstructure:"redis" json:"redis"`
 }

@@ -3,7 +3,7 @@ server:
   mode: "dev"
 bmt_user:
   database:
-    host: 127.0.0.1
+    host: "127.0.0.1"
     port: 5432
     username: "postgres"
     password: "anhiuemlove33"
@@ -16,6 +16,11 @@ bmt_user:
     port: "2587"
     username: "AKIA6GIFQIE5VHGEVMH7"
     password: "BFbj4YdNTIYrkX1+SvumRnbA0br/sUNzrUOztb7SaVkz"
+  redis:
+    host: "127.0.0.1"
+    port: 6379
+    password: ""
+    database: 0
 # logger:
 #   log_level: debug
 #   file_log_name: "./storages/logs/dev.001.log"
