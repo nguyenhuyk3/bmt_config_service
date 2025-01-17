@@ -7,9 +7,10 @@ type basicSetting struct {
 	Password string `mapstructure:"password" json:"password,omitempty"`
 	Database int    `mapstructure:"database" json:"database,omitempty"`
 }
+
 type postgreSetting struct {
 	BasicSetting    basicSetting `mapstructure:",squash" json:"basic_settings"`
-	Dbname          string       `mapstructure:"dbname" json:"dbname"`
+	DbName          string       `mapstructure:"db_name" json:"db_name"`
 	MaxIdleConns    int          `mapstructure:"max_idle_conns" json:"max_idle_conns"`
 	MaxOpenConns    int          `mapstructure:"max_open_conns" json:"max_open_conns"`
 	ConnMaxLifetime int          `mapstructure:"conn_max_lifetime" json:"conn_max_lifetime"`
